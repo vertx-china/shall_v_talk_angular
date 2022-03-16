@@ -39,3 +39,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run deploy
+        
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: master
+          folder: build
