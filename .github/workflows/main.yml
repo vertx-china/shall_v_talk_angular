@@ -44,4 +44,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: master
-          folder: dist/shall_v_talk_angular
+          folder: dist
