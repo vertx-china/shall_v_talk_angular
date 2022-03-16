@@ -1,1 +1,1 @@
-export * from './animation.selectors';
+export * from './setting.selectors';

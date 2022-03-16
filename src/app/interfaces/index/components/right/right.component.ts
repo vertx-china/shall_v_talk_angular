@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {LIGHT} from "../../../../infrastructure/config";
+import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
 
 @Component({
   selector: 'app-right',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./right.component.less']
 })
 export class RightComponent implements OnInit {
+  @Input() setting: Setting = <any>{};
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

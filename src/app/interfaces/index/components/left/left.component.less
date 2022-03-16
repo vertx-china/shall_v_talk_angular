@@ -74,17 +74,17 @@
 
 
         &-left {
-          width: 80px;
+          width: 45px;
           height: 40px;
           display: flex;
           align-items: center;
-          justify-content: space-around;
+          justify-content: flex-start;
 
           &-head {
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: #717171;
+            background-color: #404040;
 
             text-align: center;
             line-height: 30px;
@@ -110,17 +110,6 @@
     }
   }
 
-
-  &-center:after {
-    position: absolute;
-    content: " ";
-    width: 90%;
-    height: 1px;
-    background-color: #343434;
-    left: 5%;
-    top: 0px;
-    border-radius: 50%;
-  }
 }
 
 .left-center-content::-webkit-scrollbar {
@@ -140,13 +129,40 @@
   background: #404040;
 }
 
-.left:before {
+.dark.left:before {
   position: absolute;
   content: " ";
   width: 1px;
-  height: 95%;
+  height: 100%;
   background-color: #343434;
   right: 0px;
-  top: 3%;
+  top: 0px;
+  border-radius: 50%;
+}
+
+.light {
+  .left-center-content-item-right {
+    background: #f1f0f0;
+    color: #050505;
+  }
+
+  .left-center-content-item-left-head {
+    background-color: #f1f0f0;
+    color: #010101;
+  }
+
+  .left-center-title-num {
+    background-color: #f4f3f3;
+  }
+}
+
+.light.left:before {
+  background-color: #ebebeb;
+  position: absolute;
+  content: " ";
+  width: 1px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
   border-radius: 50%;
 }

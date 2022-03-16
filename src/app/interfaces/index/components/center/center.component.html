@@ -1,4 +1,4 @@
-<div class="content">
+<div [ngClass]="setting.theme" class="content">
   <div class="content-body" id="content">
     <div class="message animated slideInDown" *ngFor="let message of messages; let i = index">
       <ng-template [ngIf]="message.formType==0">
@@ -16,7 +16,9 @@
           <div class="message-box0-right" *ngIf="message.type == 1">
             <div class="message-box0-right-nickname" style="margin-left: 10px;">{{message.nickname}}</div>
             <div class="message-box0-right-img">
-              <div class="message-box0-right-img-dom" [style]="{'backgroundImage':'url('+message.message+')'}"></div>
+              <img [src]="message.message" alt="" class="message-box0-right-img-dom"
+                   referrer="no-referrer|origin|unsafe-url"
+                   srcset="">
             </div>
             <div class="message-box0-right-time" style="margin-left: 20px;">{{message.time}}</div>
           </div>

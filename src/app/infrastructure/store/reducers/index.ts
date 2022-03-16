@@ -1,14 +1,12 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
-import {AnimationState, changeVisibleReducer} from './animation.reducer';
 import {environment} from "../../../../environments/environment";
+import {cacheSettingsReducer, Setting} from "./settings.reducer";
 
 export interface State {
-  isVisible: AnimationState;
+  setting: Setting;
 }
-
 export const reducers: ActionReducerMap<any> = {
-  isVisible: changeVisibleReducer,
+  setting: cacheSettingsReducer,
 };
-
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

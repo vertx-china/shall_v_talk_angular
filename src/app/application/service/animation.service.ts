@@ -58,20 +58,18 @@ export class AnimationService {
     return this;
   }
 
-  public play() {
+  public play(callback: any = null) {
     if (AnimationService.isEmpty(this.animate)) {
       throw  new Error('动画初始化失败!');
     }
     let that = this;
-    that.path.style.fill = '#f52857d6';
     that.path.style.fill = '#248c5f';
     that.path.setAttribute('d', this.animate.initialPath);
     that.pageload.className = 'pageload-overlay show';
-    that.animateSVG(this.self, 'in', function () {
-    });
+    that.animateSVG(this.self, 'in', callback);
   }
 
-  public hide(time: any) {
+  public hide(time: any = null) {
     if (AnimationService.isEmpty(this.animate)) {
       throw  new Error('动画初始化失败!');
     }

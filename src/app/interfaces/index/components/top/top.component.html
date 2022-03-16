@@ -1,13 +1,13 @@
-<div class="head">
+<div [ngClass]="setting.theme" class="head">
   <div class="head-left">
     <div class="head-left-search">
       <div class="head-left-search-icon">
-        <img class="head-left-search-icon-img" src="../../../../../assets/icon/search.png" alt="" srcset="" />
+        <img alt="" class="head-left-search-icon-img" src="../../../../../assets/icon/search.png" srcset=""/>
       </div>
-      <div class="head-left-search-input"> Search for a message..</div>
+      <div class="head-left-search-input"> 搜索消息 ..</div>
     </div>
   </div>
-  <div class="head-right" *ngIf="active=='light'" (click)="changeTheme()">
+  <div (click)="changeTheme('light')" *ngIf="setting.theme=='light'" class="head-right">
     <div class="head-right-light head-right-dark-active">
       <img class="head-right-light-icon" src="../../../../../assets/icon/ra.png" alt="">
     </div>
@@ -15,7 +15,7 @@
       <img class="head-right-dark-icon" src="../../../../../assets/icon/y.png" alt="">
     </div>
   </div>
-  <div class="head-right" *ngIf="active=='dark'" (click)="changeTheme()">
+  <div (click)="changeTheme('dark')" *ngIf="setting.theme=='dark'" class="head-right">
     <div class="head-right-light">
       <img class="head-right-light-icon" src="../../../../../assets/icon/r.png" alt="">
     </div>
@@ -26,10 +26,10 @@
   <div class="head-calendar">
     <div class="head-calendar-text animated swing" *ngIf="time">{{time}}</div>
   </div>
-  <div class="head-notice">
-      <div class="head-notice-box">
-        <img class="head-notice-box-icon" src="../../../../../assets/icon/notice.png" >
-        <div class="head-notice-box-point"></div>
-      </div>
-  </div>
+  <!--  <div class="head-notice">-->
+  <!--      <div class="head-notice-box">-->
+  <!--        <img class="head-notice-box-icon" src="../../../../../assets/icon/notice.png" >-->
+  <!--        <div class="head-notice-box-point"></div>-->
+  <!--      </div>-->
+  <!--  </div>-->
 </div>

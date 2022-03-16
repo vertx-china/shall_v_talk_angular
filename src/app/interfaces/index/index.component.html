@@ -1,11 +1,11 @@
-<div class="page animated fadeIn" *ngIf="!loading">
+<div *ngIf="!loading" [ngClass]="setting.theme" class="page">
   <div class="page-body">
-    <app-left class="page-body-left"></app-left>
+    <app-left [setting]="setting" class="page-body-left"></app-left>
     <div class="page-body-right">
-      <app-top class="page-body-right-top"></app-top>
+      <app-top [setting]="setting" class="page-body-right-top"></app-top>
       <div class="page-body-right-bottom">
-        <app-center class="page-body-right-bottom-center"></app-center>
-        <app-right class="page-body-right-bottom-right"></app-right>
+        <app-center class="page-body-right-bottom-center" [setting]="setting"></app-center>
+        <app-right class="page-body-right-bottom-right animated slideInRight" *ngIf="showExpressionPanel" [setting]="setting"></app-right>
       </div>
     </div>
   </div>

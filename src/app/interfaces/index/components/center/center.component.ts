@@ -1,7 +1,8 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Message} from "../../../../domain/entity/message";
 import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
-import {INITDATAS, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
+import {INITDATAS, LIGHT, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
+import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
 
 @Component({
   selector: 'app-center',
@@ -10,14 +11,13 @@ import {INITDATAS, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
 })
 export class CenterComponent implements OnInit {
 
-  active: string = 'dark';
+  @Input() setting: Setting = <any>{};
   messages: Message[] = [];
   content: any;
   msg: any = {};
 
   constructor(private el: ElementRef,
               private readonly commentService: CommonService) {
-
     if (this.messages.length == 0) {
       setTimeout(()=>{
         this.commentService.event(INITDATAS, true);
@@ -41,10 +41,6 @@ export class CenterComponent implements OnInit {
     setTimeout(() => {
       this.content.scrollTop = this.content.scrollHeight + 500;
     }, 150);
-  }
-
-  changeTheme() {
-    this.active = this.active == 'light' ? 'dark' : 'light';
   }
 
   sendMsg() {

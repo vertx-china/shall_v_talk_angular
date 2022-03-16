@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {formatDate, getTime} from "../../../../infrastructure/utils";
+import {Component, Input, OnInit} from '@angular/core';
+import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
+import {THEME} from "../../../../infrastructure/config";
+import {AnimationService} from "../../../../application/service/animation.service";
+import {ANIMATES} from "../../../../domain/entity/animation";
+import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
 
 @Component({
   selector: 'app-top',
@@ -8,19 +12,24 @@ import {formatDate, getTime} from "../../../../infrastructure/utils";
 })
 export class TopComponent implements OnInit {
 
-  active: string = 'light';
+  @Input() setting: Setting = <any>{};
   time: any = null;
 
-  constructor() {
-   setInterval(() => {
+  constructor(
+    private animate: AnimationService,
+    private readonly commentService: CommonService) {
+    setInterval(() => {
       this.time = formatDate(getTime());
     }, 1000);
   }
 
-  ngOnInit(): void {
+  changeTheme(theme: any) {
+    console.log(theme);
+    this.animate.init(ANIMATES.Circle, 300).play(() => {
+      this.commentService.event(THEME, theme);
+    });
   }
 
-  changeTheme() {
-    this.active = this.active == 'light' ? 'dark' : 'light';
+  ngOnInit(): void {
   }
 }

@@ -1,1 +1,1 @@
-export * from './animation.actions';
+export * from './settings.actions';
