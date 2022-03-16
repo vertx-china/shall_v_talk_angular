@@ -1,0 +1,6 @@
+<div class="panel" [style]="{'backgroundImage':'url('+bg+')'}">
+  <div class="panel-box">
+    <app-slider class="panel-box-slider animated slideInRight" *ngIf="!loading"></app-slider>
+    <router-outlet class="panel-box-outlet animated flip"></router-outlet>
+  </div>
+</div>

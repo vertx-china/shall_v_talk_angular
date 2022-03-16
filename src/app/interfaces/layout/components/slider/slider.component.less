@@ -1,0 +1,78 @@
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-logo {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-menu {
+      width: 90%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+
+  &-body:after {
+    position: absolute;
+    content: " ";
+    width: 80%;
+    height: 1px;
+    background-color: #12975e;
+    left: 10%;
+    top: 0px;
+    border-radius: 50%;
+  }
+
+  &-body:before {
+    position: absolute;
+    content: " ";
+    width: 80%;
+    height: 1px;;
+    background-color: #12975e;
+    left: 10%;
+    bottom: 0px;
+    border-radius: 50%;
+  }
+
+
+  &-setting {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
