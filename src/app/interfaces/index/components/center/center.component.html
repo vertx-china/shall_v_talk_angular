@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="content-body" id="content">
+    <div class="message animated slideInDown" *ngFor="let message of messages; let i = index">
+      <ng-template [ngIf]="message.formType==0">
+        <div class="message-box0 other">
+          <div class="message-box0-left" [style]="{'margin-left': message.type!=0?'10px':'0px'}">
+            <div class="message-box0-left-head">{{message.nickname && message.nickname.substring(0, 1)}}</div>
+          </div>
+          <!-- 文字消息 -->
+          <div class="message-box0-right" *ngIf="message.type == 0">
+            <div class="message-box0-right-nickname">{{message.nickname}}</div>
+            <div class="message-box0-right-content">{{message.message}}</div>
+            <div class="message-box0-right-time">{{message.time}}</div>
+          </div>
+          <!-- 图片消息 -->
+          <div class="message-box0-right" *ngIf="message.type == 1">
+            <div class="message-box0-right-nickname" style="margin-left: 10px;">{{message.nickname}}</div>
+            <div class="message-box0-right-img">
+              <div class="message-box0-right-img-dom" [style]="{'backgroundImage':'url('+message.message+')'}"></div>
+            </div>
+            <div class="message-box0-right-time" style="margin-left: 20px;">{{message.time}}</div>
+          </div>
+          <!-- 链接消息 -->
+          <div class="message-box0-right" *ngIf="message.type == 2">
+            <div class="message-box0-right-nickname" style="margin-left: 10px;">{{message.nickname}}</div>
+            <div class="message-box0-right-link">
+              <a [href]="message.message" target="_blank" class="message-box0-right-link-text">
+                {{message.message}}
+              </a>
+            </div>
+            <div class="message-box0-right-time" style="margin-left: 10px;">{{message.time}}</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="message.formType==1">
+        <div class="message-box1 self animated flipInX">
+          <div class="message-box1-left">
+            <div class="message-box1-left-content">{{message.message}}</div>
+            <div class="message-box1-left-time">{{message.time}}</div>
+          </div>
+          <div class="message-box1-right">
+            <div class="message-box1-right-head">我</div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="content-foot">
+    <div class="content-foot-left">
+      <textarea class="content-foot-left-textarea" [(ngModel)]="msg.message" (keyup.enter)="sendMsg()"></textarea>
+    </div>
+    <div class="content-foot-right">
+      <div class="content-foot-right-top" (click)="sendMsg()">
+        <img class="content-foot-right-top-icon" src="../../../../../assets/icon/send.png" alt="" srcset="">
+      </div>
+      <div class="content-foot-right-bottom">
+        <img class="content-foot-right-bottom-icon" src="../../../../../assets/icon/expression.png" alt=""
+             srcset="">
+      </div>
+    </div>
+  </div>
+</div>

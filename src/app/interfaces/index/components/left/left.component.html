@@ -1,0 +1,21 @@
+<div class="left">
+  <div class="left-top">
+    <div class="left-top-head">
+      <div class="left-top-head-title">耍 微 淘</div>
+    </div>
+  </div>
+  <div class="left-center">
+    <div class="left-center-title">
+      <div class="left-center-title-text">在线用户</div>
+      <div class="left-center-title-num">{{users.length}}</div>
+    </div>
+    <div class="left-center-content">
+      <div class="left-center-content-item animated flipInX" *ngFor="let user of users; let i = index; ">
+        <div class="left-center-content-item-left">
+          <div class="left-center-content-item-left-head">{{user.username && user.username.substring(0, 1)}}</div>
+        </div>
+        <div class="left-center-content-item-right">{{user.username}}</div>
+      </div>
+    </div>
+  </div>
+</div>
