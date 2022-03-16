@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --aot",
-    "deploy": "ng deploy --no-silent --base-href=/shall_v_talk_angular/ --name='oeeCode' --email='gme@gmeapp.cn'/",
+    "deploy": "ng deploy --no-silent --base-href=/ --name='oeeCode' --email='gme@gmeapp.cn'/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
