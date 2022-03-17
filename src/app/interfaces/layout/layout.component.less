@@ -1,9 +1,10 @@
+@import "~src/assets/less/_variables.less";
 .panel {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #202020;
   background-size: cover;
+  .color-tertiary(dark);
 
   &-box {
     display: flex;
@@ -21,7 +22,8 @@
     &-slider {
       width: 80px;
       height: 100%;
-      background-color: #248c5f;
+      background-color: @color-secondary;
+      box-shadow: inset 0 0 8px @color-primary;
     }
   }
 }

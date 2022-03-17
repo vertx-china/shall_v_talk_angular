@@ -1,3 +1,4 @@
+@import "~src/assets/less/_variables.less";
 .page {
   display: flex;
   flex-direction: column;
@@ -6,9 +7,9 @@
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   overflow: hidden;
-  background-color: #1b1b1bd9;
   justify-content: center;
   align-items: center;
+  .color-tertiary(dark);
 
   &-head {
     width: 1200px;
@@ -22,7 +23,7 @@
     &-title {
       padding: 0px 30px;
       font-size: 26px;
-      color: #248c5f;
+      color: @color-primary;
       font-weight: bold;
       margin: 0px 5px;
 
@@ -32,7 +33,7 @@
       margin-right: 80px;
       width: 200px;
       height: 40px;
-      background-color: #248c5f;
+      background-color: @color-primary;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -41,7 +42,7 @@
 
       &-text {
         font-size: 22px;
-        color: #181818;
+        color: @color-tertiary-dark;
         font-weight: bold;
         width: 400px;
       }
@@ -55,7 +56,7 @@
   &-line {
     width: 90%;
     height: 2px;
-    background: #164430;
+    background: @color-secondary;
     margin-left: 2%;
   }
 
@@ -77,7 +78,7 @@
       &-label {
         margin: 0px 5px;
         font-size: 22px;
-        color: #248c5f;
+        color: @color-secondary;
         font-weight: bold;
         width: 400px;
       }
@@ -93,7 +94,7 @@
           width: 100%;
           font-size: 24px;
           font-weight: bold;
-          color: #248c5f;
+          color: @color-secondary;
           background-color: transparent;
           border: none;
           text-align: right;
@@ -102,7 +103,7 @@
         &-bg {
           width: 400px;
           height: 300px;
-          border: 5px solid #248c5f;
+          border: 5px solid @color-secondary;
           border-radius: 5px;
           overflow: hidden;
           background-size: cover;
@@ -134,7 +135,7 @@
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #999999;
+  border: 2px solid @line-color;
   border-radius: 5px;
 }
 
@@ -153,7 +154,7 @@
   padding: 0;
   line-height: 30px;
   font-size: 14px;
-  color: white;
+  color: @color-surface-light;
   font-family: Trebuchet, Arial, sans-serif;
   font-weight: bold;
   box-sizing: border-box;
@@ -162,15 +163,15 @@
 .testswitch-inner::after {
   content: attr(data-on);
   padding-left: 10px;
-  background-color: #248c5f;
-  color: #FFFFFF;
+  background-color: @color-primary;
+  color: @color-surface-light;
 }
 
 .testswitch-inner::before {
   content: attr(data-off);
   padding-right: 10px;
-  background-color: #EEEEEE;
-  color: #999999;
+  background-color: @color-surface-light;
+  color: @line-color;
   text-align: right;
 }
 
@@ -180,11 +181,11 @@
   width: 22px;
   height: 22px;
   margin: 4px;
-  background: #FFFFFF;
+  background: @color-surface-light;
   top: 0;
   bottom: 0;
   right: 56px;
-  border: 2px solid #999999;
+  border: 2px solid @line-color;
   border-radius: 20px;
   transition: all 0.3s ease-in 0s;
 }
@@ -202,7 +203,7 @@
   width: 500px;
   height: 300px;
   z-index: 9999;
-  background-color: #12975e;
+  background-color: @color-primary;
   top: 50%;
   margin-top: -250px;
   right: 400px;
@@ -210,7 +211,15 @@
   padding: 20px;
 
   &-text {
-    color: #FFFFFF;
+    color: @color-surface-light;
     font-size: 60px;
+  }
+}
+
+.light.page {
+  background-color: @color-tertiary-light;
+
+  .page-head-action-text {
+    color: @color-tertiary-light;
   }
 }

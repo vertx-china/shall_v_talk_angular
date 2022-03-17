@@ -3,7 +3,8 @@
     <div class="message animated slideInDown" *ngFor="let message of messages; let i = index">
       <ng-template [ngIf]="message.formType==0">
         <div class="message-box0 other">
-          <div class="message-box0-left" [style]="{'margin-left': message.type!=0?'10px':'0px'}">
+          <div [ngStyle]="{'margin-left':(setting.theme=='light' && message.type!=0)?'40px':'10px'}"
+               class="message-box0-left">
             <div class="message-box0-left-head">{{message.nickname && message.nickname.substring(0, 1)}}</div>
           </div>
           <!-- 文字消息 -->
@@ -14,23 +15,28 @@
           </div>
           <!-- 图片消息 -->
           <div class="message-box0-right" *ngIf="message.type == 1">
-            <div class="message-box0-right-nickname" style="margin-left: 10px;">{{message.nickname}}</div>
-            <div class="message-box0-right-img">
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
+                 class="message-box0-right-nickname">{{message.nickname}}</div>
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}" class="message-box0-right-img"
+                 srcset="">
               <img [src]="message.message" alt="" class="message-box0-right-img-dom"
                    referrer="no-referrer|origin|unsafe-url"
-                   srcset="">
+              >
             </div>
-            <div class="message-box0-right-time" style="margin-left: 20px;">{{message.time}}</div>
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'20px'}"
+                 class="message-box0-right-time">{{message.time}}</div>
           </div>
           <!-- 链接消息 -->
           <div class="message-box0-right" *ngIf="message.type == 2">
-            <div class="message-box0-right-nickname" style="margin-left: 10px;">{{message.nickname}}</div>
-            <div class="message-box0-right-link">
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
+                 class="message-box0-right-nickname">{{message.nickname}}</div>
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'50px':'10px'}" class="message-box0-right-link">
               <a [href]="message.message" target="_blank" class="message-box0-right-link-text">
                 {{message.message}}
               </a>
             </div>
-            <div class="message-box0-right-time" style="margin-left: 10px;">{{message.time}}</div>
+            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
+                 class="message-box0-right-time">{{message.time}}</div>
           </div>
         </div>
       </ng-template>

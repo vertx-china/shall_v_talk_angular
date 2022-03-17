@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Message} from "../../../../domain/entity/message";
 import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
-import {INITDATAS, LIGHT, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
+import {INITDATAS, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
 import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
 
 @Component({
@@ -44,11 +44,13 @@ export class CenterComponent implements OnInit {
   }
 
   sendMsg() {
-    this.commentService.event(SENDMSG, this.msg);
-    this.scrollToBottom();
-    this.msg.formType = 1;
-    this.msg.time = formatDate(getTime());
-    this.messages.push(this.msg);
-    this.msg = {};
+    if (this.msg.message && this.msg.message.length() > 0) {
+      this.commentService.event(SENDMSG, this.msg);
+      this.scrollToBottom();
+      this.msg.formType = 1;
+      this.msg.time = formatDate(getTime());
+      this.messages.push(this.msg);
+      this.msg = {};
+    }
   }
 }

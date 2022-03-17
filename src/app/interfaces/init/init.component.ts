@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {select, Store} from "@ngrx/store";
 import {AppStoreModule} from "../../infrastructure/store/store.module";
 import {getSetting} from "../../infrastructure/store/selectors";
@@ -11,8 +11,7 @@ import {CommonService} from "../../infrastructure/utils";
 @Component({
   selector: 'app-init',
   templateUrl: './init.component.html',
-  styleUrls: ['./init.component.less'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./init.component.less']
 })
 export class InitComponent implements OnInit {
   loading = true;

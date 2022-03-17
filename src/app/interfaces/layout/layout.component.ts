@@ -83,12 +83,13 @@ export class LayoutComponent implements OnInit {
   messageType(message: any): number {
     if (message) {
       message = `${message}`.toLowerCase();
-      if (message.search('http') != -1 && (
+      if ((message.search('http') != -1 && (
         message.search('jpeg') != -1 ||
         message.search('png') != -1 ||
         message.search('gif') != -1 ||
-        message.search('jpg') != -1
-      )) {
+        message.search('jpg') != -1 ||
+        message.search('/null') != -1
+      )) || message.search('data:image') != -1) {
         return 1;
       } else if (message.search('http') != -1) {
         return 2;

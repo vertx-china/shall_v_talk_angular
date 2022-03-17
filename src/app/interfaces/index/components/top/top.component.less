@@ -1,3 +1,4 @@
+@import "~src/assets/less/_variables.less";
 .head {
   position: relative;
   width: 95%;
@@ -20,6 +21,7 @@
       flex-direction: row;
       background: #404040;
       align-items: center;
+      box-shadow: inset 0 0 8px @color-secondary;
 
       &-icon {
         width: 40px;
@@ -38,7 +40,7 @@
       }
 
       &-input {
-        color: #717171;
+        color: @bg-tertiary;
         font-weight: 500;
         font-size: 14px;
       }
@@ -59,7 +61,7 @@
       height: 35px;
       align-items: center;
       justify-content: center;
-      background-color: #404040;
+      background-color: @bg-surface;
 
       &-icon {
         width: 20px;
@@ -78,7 +80,7 @@
     }
 
     &-light-active, &-dark-active {
-      background-color: white;
+      background-color: @bg-primary;
       border-radius: 5px;
     }
   }
@@ -91,7 +93,7 @@
     &-text {
       margin-left: 15%;
       font-size: 18px;
-      color: #4c4c4c;
+      color: @bg-surface;
     }
   }
 
@@ -111,7 +113,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background-color: #ff2600;
+        background-color: @tip-color;
         top: 35px;
         left: 18px;
       }
@@ -129,10 +131,10 @@
 
 .light {
   .head-right-light {
-    background-color: #f4f3f3;
+    .box-show1()
   }
 
   .head-left-search {
-    background: #f1f0f0;
+    .box-show1()
   }
 }

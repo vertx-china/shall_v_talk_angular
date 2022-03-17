@@ -1,0 +1,45 @@
+@color-primary: #248c5f;
+@color-secondary: #008a57c9;
+@color-tertiary-light: rgba(255, 255, 255, 0.9);
+@color-surface-light: rgba(255, 255, 255, 0.8);
+@color-tertiary-dark: #202020;
+@color-surface-dark: #1b1b1bd9;
+@line-color: #999999;
+
+@bg-primary: #ffffff;
+@bg-secondary: #626262;
+@bg-tertiary: rgba(255 255 255, 0.2);
+@bg-surface: #3e3e3e;
+@box-shadow-color: rgba(0, 0, 0, 0.2);
+@box-primary-shadow-color: #e6e6e6;
+@box-secondary-shadow-color: #d4d4d4;
+@tip-color: #ff2600;
+
+@border-color-primary: rgba(0, 138, 87, 0.35);
+.color-tertiary(dark) {
+  background-color: @color-tertiary-dark;
+}
+
+.color-tertiary(light) {
+  background-color: @color-tertiary-light;
+}
+
+.color-surface(dark) {
+  background-color: @color-surface-dark;
+}
+
+.color-surface(light) {
+  background-color: @bg-primary;
+}
+
+.box-show1() {
+  background: linear-gradient(145deg, @box-primary-shadow-color, @bg-primary);
+  box-shadow: 13px 13px 20px @box-secondary-shadow-color,
+    -13px -13px 20px @bg-primary;
+}
+
+.box-show2() {
+  background: linear-gradient(145deg, @bg-primary, @box-primary-shadow-color);
+  box-shadow: 13px 13px 20px @bg-primary,
+    -13px -13px 20px @box-secondary-shadow-color;
+}
