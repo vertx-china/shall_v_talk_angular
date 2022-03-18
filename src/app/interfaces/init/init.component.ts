@@ -5,7 +5,7 @@ import {getSetting} from "../../infrastructure/store/selectors";
 import {Router} from "@angular/router";
 import {Setting} from "../../infrastructure/store/reducers/settings.reducer";
 import {cacheSettings} from "../../infrastructure/store/actions";
-import {CONNECT, SETTING} from "../../infrastructure/config";
+import {CONNECT, SETTING, TIP} from "../../infrastructure/config";
 import {CommonService} from "../../infrastructure/utils";
 
 @Component({
@@ -15,7 +15,7 @@ import {CommonService} from "../../infrastructure/utils";
 })
 export class InitComponent implements OnInit {
   loading = true;
-  helpState = true;
+
   setting: Setting = <any>{};
 
   constructor(
@@ -31,12 +31,14 @@ export class InitComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.loading = false;
-      this.helpState = true;
     }, 350)
     if (!this.setting.inInit) {
       setTimeout(() => {
-        this.helpState = false;
-      }, 3000)
+        this.commentService.event(TIP, {
+          type: 0,
+          text: "欢迎加入TreeNewBee频道,请先进行偏好设置！"
+        })
+      }, 300);
     }
   }
 

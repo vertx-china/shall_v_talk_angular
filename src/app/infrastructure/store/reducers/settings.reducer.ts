@@ -1,6 +1,6 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {cacheSettings} from './../actions';
-import {DARK, LIGHT, SETTING} from "../../config";
+import {SETTING} from "../../config";
 import {storage} from "../../utils";
 
 
@@ -19,7 +19,6 @@ const reducer = createReducer(
   on(cacheSettings, (state: Setting, {setting}) => {
     let obj: Setting = <any>{};
     obj = Object.assign(obj, setting);
-    obj.theme = obj.theme == DARK ? LIGHT : DARK;
     storage.setItem(SETTING, JSON.stringify(obj));
     return ({
       animation: obj.animation,

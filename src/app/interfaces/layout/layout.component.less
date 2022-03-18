@@ -28,3 +28,35 @@
   }
 }
 
+
+.helper {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  z-index: 9999;
+  background-color: @color-primary;
+  top: 50%;
+  margin-top: -150px;
+  margin-left: -250px;
+  left: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-text {
+    color: @color-surface-light;
+    font-size: 60px;
+    text-align: center;
+  }
+}
+
+.helper.light {
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 13px 13px 20px #d4d4d4, -13px -13px 20px #ffffff;
+
+  .helper-text {
+    color: @color-tertiary-dark;
+  }
+}

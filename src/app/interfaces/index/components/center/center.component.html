@@ -3,39 +3,37 @@
     <div class="message animated slideInDown" *ngFor="let message of messages; let i = index">
       <ng-template [ngIf]="message.formType==0">
         <div class="message-box0 other">
-          <div [ngStyle]="{'margin-left':(setting.theme=='light' && message.type!=0)?'40px':'10px'}"
+          <div [ngStyle]="{'margin-left':(setting.theme=='light' && message.type==2)?'40px':'10px'}"
                class="message-box0-left">
             <div class="message-box0-left-head">{{message.nickname && message.nickname.substring(0, 1)}}</div>
           </div>
           <!-- 文字消息 -->
-          <div class="message-box0-right" *ngIf="message.type == 0">
+          <div *ngIf="message.type == 0" [ngClass]="message.type==1?'text':''" class="message-box0-right">
             <div class="message-box0-right-nickname">{{message.nickname}}</div>
             <div class="message-box0-right-content">{{message.message}}</div>
             <div class="message-box0-right-time">{{message.time}}</div>
           </div>
           <!-- 图片消息 -->
-          <div class="message-box0-right" *ngIf="message.type == 1">
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
-                 class="message-box0-right-nickname">{{message.nickname}}</div>
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}" class="message-box0-right-img"
-                 srcset="">
-              <img [src]="message.message" alt="" class="message-box0-right-img-dom"
-                   referrer="no-referrer|origin|unsafe-url"
-              >
+          <div *ngIf="message.type == 1" [ngClass]="message.type==1?'img':''" class="message-box0-right">
+            <div
+              class="message-box0-right-nickname">{{message.nickname}}</div>
+            <div [innerHTML]="message.message" class="message-box0-right-innerhtml">
+
             </div>
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'20px'}"
-                 class="message-box0-right-time">{{message.time}}</div>
+            <div
+              class="message-box0-right-time">{{message.time}}</div>
           </div>
           <!-- 链接消息 -->
-          <div class="message-box0-right" *ngIf="message.type == 2">
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
+          <div *ngIf="message.type == 2" [ngClass]="message.type==1?'link':''" class="message-box0-right">
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
                  class="message-box0-right-nickname">{{message.nickname}}</div>
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}" class="message-box0-right-link">
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
+                 class="message-box0-right-link">
               <a [href]="message.message" target="_blank" class="message-box0-right-link-text">
                 {{message.message}}
               </a>
             </div>
-            <div [ngStyle]="{'margin-left': (setting.theme=='light')?'30px':'10px'}"
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
                  class="message-box0-right-time">{{message.time}}</div>
           </div>
         </div>
@@ -54,16 +52,28 @@
     </div>
   </div>
   <div class="content-foot">
-    <div class="content-foot-left">
-      <textarea class="content-foot-left-textarea" [(ngModel)]="msg.message" (keyup.enter)="sendMsg()"></textarea>
-    </div>
-    <div class="content-foot-right">
-      <div class="content-foot-right-top" (click)="sendMsg()">
-        <img class="content-foot-right-top-icon" src="../../../../../assets/icon/send.png" alt="" srcset="">
+
+    <div class="content-foot-box">
+      <div class="content-foot-box-top">
+        <div (click)="action(0)" class="content-foot-box-top-action">
+          <img alt="" class="content-foot-box-top-action-img" src="../../../../../assets/icon/pic.png" srcset="">
+        </div>
+        <div (click)="action(1)" class="content-foot-box-top-action">
+          <img alt="" class="content-foot-box-top-action-img" src="../../../../../assets/icon/expression.png" srcset="">
+        </div>
+        <div (click)="action(2)" class="content-foot-box-top-action">
+          <img alt="" class="content-foot-box-top-action-img" src="../../../../../assets/icon/file.png" srcset="">
+        </div>
+        <div (click)="action(3)" class="content-foot-box-top-action">
+          <img alt="" class="content-foot-box-top-action-img" src="../../../../../assets/icon/video.png" srcset="">
+        </div>
+        <div (click)="action(4)" class="content-foot-box-top-action">
+          <img alt="" class="content-foot-box-top-action-img" src="../../../../../assets/icon/history.png" srcset="">
+        </div>
       </div>
-      <div class="content-foot-right-bottom">
-        <img class="content-foot-right-bottom-icon" src="../../../../../assets/icon/expression.png" alt=""
-             srcset="">
+      <div class="content-foot-box-bottom">
+        <textarea (keyup.enter)="sendMsg()" [(ngModel)]="msg.message"
+                  class="content-foot-box-bottom-textarea"></textarea>
       </div>
     </div>
   </div>

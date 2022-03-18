@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
-import {THEME} from "../../../../infrastructure/config";
+import {DARK, LIGHT, THEME} from "../../../../infrastructure/config";
 import {AnimationService} from "../../../../application/service/animation.service";
 import {ANIMATES} from "../../../../domain/entity/animation";
 import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
@@ -24,7 +24,7 @@ export class TopComponent implements OnInit {
   }
 
   changeTheme(theme: any) {
-    console.log(theme);
+    theme = this.setting.theme == DARK ? LIGHT : DARK;
     this.animate.init(ANIMATES.Circle, 300).play(() => {
       this.commentService.event(THEME, theme);
     });

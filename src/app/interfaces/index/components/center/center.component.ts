@@ -1,13 +1,14 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Message} from "../../../../domain/entity/message";
 import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
-import {INITDATAS, NEW_MSG, SENDMSG} from "../../../../infrastructure/config";
+import {INITDATAS, NEW_MSG, SENDMSG, TIP} from "../../../../infrastructure/config";
 import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
 
 @Component({
   selector: 'app-center',
   templateUrl: './center.component.html',
-  styleUrls: ['./center.component.less']
+  styleUrls: ['./center.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CenterComponent implements OnInit {
 
@@ -18,10 +19,11 @@ export class CenterComponent implements OnInit {
 
   constructor(private el: ElementRef,
               private readonly commentService: CommonService) {
+
     if (this.messages.length == 0) {
-      setTimeout(()=>{
+      setTimeout(() => {
         this.commentService.event(INITDATAS, true);
-      },400);
+      }, 400);
     }
     this.commentService.subscribe(NEW_MSG, (event: any) => {
       if (event) {
@@ -39,7 +41,7 @@ export class CenterComponent implements OnInit {
 
   scrollToBottom() {
     setTimeout(() => {
-      this.content.scrollTop = this.content.scrollHeight + 500;
+      this.content.scrollTop = this.content.scrollHeight * 2;
     }, 150);
   }
 
@@ -53,4 +55,13 @@ export class CenterComponent implements OnInit {
       this.msg = {};
     }
   }
+
+  action(key: any) {
+    this.commentService.event(TIP, {
+      type: 1,
+      text: "功能暂未开放！敬请期待"
+    })
+  }
+
+
 }

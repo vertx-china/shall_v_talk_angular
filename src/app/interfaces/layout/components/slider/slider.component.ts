@@ -20,8 +20,10 @@ export class SliderComponent implements OnInit {
   ];
   setting: Setting = <any>{};
 
-  constructor(private router: Router,
-              private store$: Store<AppStoreModule>) {
+  constructor(
+    private router: Router,
+    private store$: Store<AppStoreModule>) {
+    this.active = window.location.href.search(this.menus[0]['path']) != -1 ? 0 : 1;
     this.store$.pipe(select(SETTING as any), select(getSetting as any)).subscribe((res: any) => {
       this.setting = Object.assign(this.setting, res);
     });

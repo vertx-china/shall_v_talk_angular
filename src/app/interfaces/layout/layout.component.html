@@ -3,4 +3,8 @@
     <app-slider class="panel-box-slider animated slideInRight" *ngIf="!loading"></app-slider>
     <router-outlet class="panel-box-outlet animated flip"></router-outlet>
   </div>
+
+  <div *ngIf="showState" [ngClass]="[setting.theme,animatedClass] " class="helper animated">
+    <div class="helper-text">{{text}}</div>
+  </div>
 </div>

@@ -83,6 +83,12 @@
       background-color: @bg-primary;
       border-radius: 5px;
     }
+
+    &-light-active:hover,
+    &-dark-active:hover {
+      .box-show2();
+      cursor: pointer;
+    }
   }
 
   &-calendar {
@@ -94,7 +100,6 @@
       margin-left: 15%;
       font-size: 18px;
       color: @bg-surface;
-      text-shadow: 3px 3px 7px rgb(32 32 32);
     }
   }
 
@@ -137,5 +142,10 @@
 
   .head-left-search {
     .box-show1()
+  }
+
+  .head-left-search:hover {
+    .box-show2();
+    cursor: pointer;
   }
 }

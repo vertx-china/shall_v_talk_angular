@@ -1,9 +1,4 @@
 <div *ngIf="!loading" [ngClass]="setting.theme" class="page animated fadeIn">
-  <div class="helper animated" *ngIf="!setting.inInit" [ngClass]="helpState?'slideInRight':'hinge'">
-    <div class="helper-text">
-      欢迎加入TreeNewBee频道,请先进行偏好设置！
-    </div>
-  </div>
   <div class="page-head">
     <div class="page-head-title">耍微淘-偏好设置</div>
     <div class="page-head-action" (click)="save()">

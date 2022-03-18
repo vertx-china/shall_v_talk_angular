@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonService} from "../../infrastructure/utils";
 import {ChatService} from "../../application/service/chat.service";
-import {CONNECT, INITDATAS, NEW_MSG, NICKNAMES, ONLINE, SENDMSG, SETTING} from "../../infrastructure/config";
+import {CONNECT, INITDATAS, NEW_MSG, NICKNAMES, ONLINE, SENDMSG, SETTING, TIP} from "../../infrastructure/config";
 import {Message} from "../../domain/entity/message";
 import {SocketService} from "../../application/service/socket.service";
 import {select, Store} from "@ngrx/store";
-import {getSetting} from "../../infrastructure/store/selectors";
 import {AppStoreModule} from "../../infrastructure/store/store.module";
 import {Setting} from "../../infrastructure/store/reducers/settings.reducer";
+import {getSetting} from "../../infrastructure/store/selectors";
 
 @Component({
   selector: 'app-layout',
@@ -23,6 +23,10 @@ export class LayoutComponent implements OnInit {
   users: any[] = [];
   user: any;
   setting: Setting = <any>{};
+  showState: any = false;
+  animatedClass: any = "slideInRight";
+  text: string = '';
+  pattern = /https:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?\/(jpg|png|jpeg|gif|null)/gi;
 
   constructor(
     private readonly wsService: SocketService,
@@ -31,6 +35,40 @@ export class LayoutComponent implements OnInit {
     commentService.subscribe(CONNECT, (event: any) => {
       if (event) {
         this.initEvent();
+      }
+    });
+
+    /**
+     * @see  NoticeComponent
+     * @deprecated 下个版本封装组件
+     */
+    commentService.subscribe(TIP, (event: any) => {
+      if (event && !this.showState) {
+        let {param} = event;
+        let {type, text} = param;
+        this.text = text;
+        let openClass = "slideInRight";
+        let closeClass = "hinge";
+        if (type == 0) {
+          closeClass = "hinge";
+        } else {
+          closeClass = "flipOutX";
+        }
+        setTimeout(() => {
+          setTimeout(() => {
+            this.animatedClass = openClass;
+            this.showState = false;
+            setTimeout(() => {
+              this.showState = true;
+              this.animatedClass = closeClass;
+              setTimeout(() => {
+                this.showState = false;
+                this.animatedClass = openClass;
+              }, type == 0 ? 2000 : 500)
+            }, 0);
+          }, 1500);
+          this.showState = true;
+        }, 10);
       }
     });
 
@@ -64,6 +102,9 @@ export class LayoutComponent implements OnInit {
       this.chat.messages.subscribe((msg: any) => {
         if (msg.nickname) {
           msg.type = this.messageType(msg.message);
+          if (msg.type == 1) {
+            msg.message = this.load(msg.message);
+          }
           msg.formType = 0;
           this.messages.push(msg);
           this.commentService.event(NEW_MSG, msg);
@@ -81,17 +122,12 @@ export class LayoutComponent implements OnInit {
   }
 
   messageType(message: any): number {
+    var reg = new RegExp(this.pattern, "i");
     if (message) {
       message = `${message}`.toLowerCase();
-      if ((message.search('http') != -1 && (
-        message.search('jpeg') != -1 ||
-        message.search('png') != -1 ||
-        message.search('gif') != -1 ||
-        message.search('jpg') != -1 ||
-        message.search('/null') != -1
-      )) || message.search('data:image') != -1) {
+      if (reg.test(message) || message.search('data:image') != -1) {
         return 1;
-      } else if (message.search('http') != -1) {
+      } else if (message.search('http:\\/\\/') != -1 || message.search('https:\\/\\/') != -1) {
         return 2;
       } else {
         return 0;
@@ -100,6 +136,26 @@ export class LayoutComponent implements OnInit {
     return 0;
   }
 
+  load(message: any) {
+    let key = "GGGGG";
+    let html = '';
+    let match = message.match(this.pattern);
+    if (match) {
+      match.forEach((a: any) => {
+        message = message.replace(a, key);
+      });
+      let arr = message.split(key)
+      arr.forEach((a: any) => {
+        if (a && a.trim() != '') {
+          html += `<div  class="message-box0-right-innerhtml-text" >${a}</div>`
+        }
+      })
+      match.forEach((a: any) => {
+        html += `<img src="${a}" class="message-box0-right-innerhtml-img">`
+      })
+    }
+    return html;
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
