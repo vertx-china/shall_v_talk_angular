@@ -1,7 +1,7 @@
 @import "~src/assets/less/_variables.less";
+
 .left {
   width: 100%;
-  height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -60,10 +60,12 @@
       }
     }
 
+    @width: 80vh;
+
     &-content {
       overflow-x: hidden;
       overflow-y: auto;
-      height: 700px;
+      height: calc(@width - 150px);
       width: 100%;
 
       &-item {

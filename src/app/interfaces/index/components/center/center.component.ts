@@ -3,6 +3,7 @@ import {Message} from "../../../../domain/entity/message";
 import {CommonService, formatDate, getTime} from "../../../../infrastructure/utils";
 import {INITDATAS, NEW_MSG, SENDMSG, TIP} from "../../../../infrastructure/config";
 import {Setting} from "../../../../infrastructure/store/reducers/settings.reducer";
+import {SYMBOL} from "../../../../infrastructure/symbol";
 
 @Component({
   selector: 'app-center',
@@ -16,6 +17,7 @@ export class CenterComponent implements OnInit {
   messages: Message[] = [];
   content: any;
   msg: any = {};
+  symbol: any = SYMBOL;
 
   constructor(private el: ElementRef,
               private readonly commentService: CommonService) {
@@ -46,7 +48,7 @@ export class CenterComponent implements OnInit {
   }
 
   sendMsg() {
-    if (this.msg.message && this.msg.message.length() > 0) {
+    if (this.msg.message && this.msg.message.length > 0) {
       this.commentService.event(SENDMSG, this.msg);
       this.scrollToBottom();
       this.msg.formType = 1;
@@ -63,5 +65,7 @@ export class CenterComponent implements OnInit {
     })
   }
 
-
+  getRandom() {
+    return Math.round(Math.random() * SYMBOL.length);
+  }
 }

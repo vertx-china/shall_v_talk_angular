@@ -1,8 +1,12 @@
 @import "~src/assets/less/_variables.less";
+
+@width: 80vw;
+@sliderWidth: 80px;
+
 .page {
   display: flex;
   flex-direction: row;
-  width: 1320px;
+  width: calc(@width - @sliderWidth);
   height: 100%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -67,6 +71,7 @@
 .light.page {
   .box-show1()
 }
+
 .light {
   .color-surface(light);
 

@@ -1,23 +1,28 @@
 @import "~src/assets/less/_variables.less";
+
+@width: 80vw;
+@height: 80vh;
 .panel {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  width: @width;
+  height: @height;
+  margin-left: (0-@width/2);
+  margin-top: (0-@height/2);
+  top: 50%;
+  left: 50%;
   background-size: cover;
   .color-tertiary(dark);
+  overflow: hidden;
+  border-radius: 10px;
 
   &-box {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 1400px;
-    height: 850px;
-    top: 50%;
-    left: 50%;
-    margin-left: -700px;
-    margin-top: -425px;
+    width: 80vw;
+    height: 80vh;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
 
     &-slider {
       width: 80px;
@@ -28,16 +33,17 @@
   }
 }
 
-
+@dialogWidth: 30vw;
+@dialogHeight: 20vw;
 .helper {
   position: absolute;
-  width: 500px;
-  height: 300px;
+  width: @dialogWidth;
+  height: @dialogHeight;
   z-index: 9999;
   background-color: @color-primary;
   top: 50%;
-  margin-top: -150px;
-  margin-left: -250px;
+  margin-top: (0-@dialogHeight/2);
+  margin-left: (0-@dialogWidth/2);
   left: 50%;
   border-radius: 10px;
   padding: 20px;
@@ -47,7 +53,7 @@
 
   &-text {
     color: @color-surface-light;
-    font-size: 60px;
+    font-size: 48px;
     text-align: center;
   }
 }
@@ -59,4 +65,7 @@
   .helper-text {
     color: @color-tertiary-dark;
   }
+}
+.light.panel {
+  background-color: @bg-primary;
 }

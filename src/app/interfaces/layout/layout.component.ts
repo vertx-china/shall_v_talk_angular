@@ -18,7 +18,6 @@ export class LayoutComponent implements OnInit {
   chat: any;
   loading = true;
   isInit = false;
-  bg: string = 'https://www.wallpaperup.com/uploads/wallpapers/2016/10/03/1022492/63c97c977402a371a9bc4ec000704a83.jpg';
   messages: Message[] = [];
   users: any[] = [];
   user: any;

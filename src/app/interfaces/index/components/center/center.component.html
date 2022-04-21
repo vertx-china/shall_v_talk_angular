@@ -3,7 +3,7 @@
     <div class="message animated slideInDown" *ngFor="let message of messages; let i = index">
       <ng-template [ngIf]="message.formType==0">
         <div class="message-box0 other">
-          <div [ngStyle]="{'margin-left':(setting.theme=='light' && message.type==2)?'40px':'10px'}"
+          <div [ngStyle]="{'margin-left':(setting.theme=='light' && message.type==2)?'30px':(message.type == 2)?'10px':'0px'}"
                class="message-box0-left">
             <div class="message-box0-left-head">{{message.nickname && message.nickname.substring(0, 1)}}</div>
           </div>
@@ -25,15 +25,15 @@
           </div>
           <!-- 链接消息 -->
           <div *ngIf="message.type == 2" [ngClass]="message.type==1?'link':''" class="message-box0-right">
-            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'10px'}"
                  class="message-box0-right-nickname">{{message.nickname}}</div>
-            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'10px'}"
                  class="message-box0-right-link">
               <a [href]="message.message" target="_blank" class="message-box0-right-link-text">
                 {{message.message}}
               </a>
             </div>
-            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'0px'}"
+            <div [ngStyle]="{'margin-left':(setting.theme=='light')?'30px':'10px'}"
                  class="message-box0-right-time">{{message.time}}</div>
           </div>
         </div>
